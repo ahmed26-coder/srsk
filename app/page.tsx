@@ -19,11 +19,11 @@ export default function Home() {
   }) => {
     try {
       setErrorMessage(null)
-      
+
       // Log outgoing data for verification
       console.log('=== SENDING DATA TO API ===')
       console.log('Request data:', JSON.stringify(data, null, 2))
-      
+
       const response = await fetch('/api/predict', {
         method: 'POST',
         headers: {
@@ -31,14 +31,14 @@ export default function Home() {
         },
         body: JSON.stringify(data)
       });
-      
+
       console.log('Response status:', response.status, response.statusText)
 
       if (!response.ok) {
         // Read response body once (can only be read once)
         const responseText = await response.text();
         let errorDetails: unknown = null;
-        
+
         // Try to parse as JSON
         try {
           errorDetails = JSON.parse(responseText);
@@ -53,7 +53,7 @@ export default function Home() {
         // 1) our proxy returns: { error, status, statusText, details: { detail: [...] }, raw }
         if (typeof errorDetails === 'object' && errorDetails && errorDetails !== null) {
           const err = errorDetails as { error?: unknown; detail?: unknown; details?: { detail?: unknown } }
-          
+
           if (typeof err.error === 'string') {
             friendlyMessage = err.error
           }
@@ -98,13 +98,13 @@ export default function Home() {
       }
 
       const result = await response.json();
-      
+
       // Log received data for verification
       console.log('=== RECEIVED DATA FROM API ===')
       console.log('Full response:', JSON.stringify(result, null, 2))
       console.log('Item name:', result.item_name)
       console.log('Recommended order quantity:', result.recommended_order_quantity)
-      
+
       // Verify we have the required fields
       if (!result.item_name || result.recommended_order_quantity === undefined) {
         console.error('Missing required fields in response:', result)
@@ -112,7 +112,7 @@ export default function Home() {
         setResults(null)
         return
       }
-      
+
       setResults({
         item_name: result.item_name,
         recommended_order_quantity: result.recommended_order_quantity
@@ -143,7 +143,7 @@ export default function Home() {
         <div className="absolute inset-0 grid-pattern opacity-20"></div>
       </div>
 
-      <div className="relative z-10 flex flex-col items-center justify-center min-height-screen p-4 gap-10">
+      <div className="relative z-10 flex min-h-screen items-center justify-center p-4">
         <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           {/* كارت الإدخال */}
           <div className="animate-slideInLeft">
@@ -155,12 +155,6 @@ export default function Home() {
             <ResultsCard results={results} errorMessage={errorMessage} />
           </div>
         </div>
-
-        <footer className="w-full max-w-5xl text-center text-[11px] text-slate-300/80 pt-2 border-t border-slate-400/40">
-          <span className="uppercase tracking-[0.28em] text-cyan-300/70">
-            Stark Inventory Intelligence · Powered by AI Forecasting
-          </span>
-        </footer>
       </div>
     </main>
   )

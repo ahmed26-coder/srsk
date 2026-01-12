@@ -94,7 +94,7 @@ export default function InventoryForm({ onSubmit }: InventoryFormProps) {
           <div className="absolute -right-24 -bottom-24 h-56 w-56 rounded-full bg-fuchsia-500/25 blur-3xl" />
         </div>
 
-        <div className="relative z-10 p-8 lg:p-10 h-full flex flex-col">
+        <div className="relative z-10 p-4 lg:p-10 h-full flex flex-col">
           <div className="mb-8">
             <p className="text-xs uppercase tracking-[0.35em] text-cyan-300/70 mb-2">
               Inventory Input

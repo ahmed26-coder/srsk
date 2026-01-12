@@ -18,7 +18,7 @@ export default function ResultsCard({ results, errorMessage }: ResultsCardProps)
           <div className="absolute -left-24 -bottom-24 h-56 w-56 rounded-full bg-fuchsia-500/30 blur-3xl" />
         </div>
 
-        <div className="relative z-10 p-8 lg:p-10 h-full flex flex-col justify-center">
+        <div className="relative z-10 p-5 lg:p-10 h-full flex flex-col justify-center">
           <div>
             <p className="text-xs uppercase tracking-[0.35em] text-cyan-300/70 mb-2 text-center">
               Recommended Order Quantity
@@ -67,7 +67,7 @@ export default function ResultsCard({ results, errorMessage }: ResultsCardProps)
                 </div>
               </div>
             ) : (
-              <div className="flex flex-col items-center justify-center py-16 text-center gap-3">
+              <div className="flex flex-col items-center justify-center lg:py-16 text-center gap-3">
                 <div className="w-24 h-24 rounded-full bg-slate-900/70 border border-dashed border-cyan-400/40 flex items-center justify-center mb-2 shadow-[0_0_25px_rgba(56,189,248,0.4)]">
                   <div className="text-4xl">📊</div>
                 </div>
