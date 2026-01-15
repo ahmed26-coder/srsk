@@ -116,7 +116,7 @@ export default function InventoryForm({ onSubmit }: InventoryFormProps) {
                 name="item_name"
                 value={formData.item_name}
                 onChange={handleChange}
-                placeholder="Quantum Sensor Array"
+                placeholder="Honey"
                 className={`w-full rounded-xl border bg-slate-900/70 px-4 py-3 text-sm text-slate-100 placeholder-slate-500 shadow-inner shadow-cyan-500/10 focus:outline-none focus:ring-2 focus:ring-cyan-400/80 focus:border-cyan-300/80 transition-all duration-300 ${
                   errors.item_name
                     ? "border-red-400/80 focus:ring-red-400/60"
